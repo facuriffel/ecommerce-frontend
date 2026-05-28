@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { CartItem } from '../models/cart-item.model';
 import { Product } from '../models/product.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class CartService {
@@ -55,7 +56,7 @@ export class CartService {
     const upper = code.toUpperCase();
     if (this.discountCode() === upper) return of('already');
     
-    return this.http.get<number>(`http://localhost:8080/api/descuentos/validar?codigo=${upper}`).pipe(
+    return this.http.get<number>(`${environment.apiBaseUrl}/descuentos/validar?codigo=${upper}`).pipe(
       map(rate => {
         if (rate > 0) {
           this.discountRate.set(rate);

@@ -40,13 +40,37 @@ npm install
 ### Servidor de desarrollo
 
 ```bash
-npm start
-# o equivalentemente:
 ng serve
 ```
 
-La aplicación estará disponible en **[http://localhost:4200](http://localhost:4200)**.  
+La aplicación estará disponible en **http://localhost:4200/ecommerce/**.  
 Se recarga automáticamente al detectar cambios en los archivos fuente.
+
+> El `base href` está configurado como `/ecommerce/` para coincidir con el despliegue en Apache (`htdocs/ecommerce`).  
+> Si preferís navegar en `localhost:4200/` sin el prefijo durante el desarrollo, podés correr:
+> ```bash
+> ng serve --base-href /
+> ```
+
+---
+
+## ⚙️ Environments
+
+La URL base del backend se configura por environment en `src/environments/`.
+
+| Comando | Environment | Base URL del backend |
+|---|---|---|
+| `ng serve` | `environment.local.ts` | `http://localhost:8080/api` |
+| `ng serve --configuration dev` | `environment.dev.ts` | `http://localhost:8080/ecommerce-1.0.0/api` |
+| `ng build` | `environment.ts` (prod) | Configurar en `environment.ts` |
+
+Para hacer el build de producción:
+
+```bash
+ng build
+```
+
+El resultado queda en `dist/ecommerce-frontend/` listo para copiar a `htdocs/ecommerce` en XAMPP.
 
 ## 🧱 Stack tecnológico
 

@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { BadgeModule } from 'primeng/badge';
 import { CartService } from '../../../core/services/cart.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-navbar',
@@ -13,4 +14,5 @@ import { CartService } from '../../../core/services/cart.service';
 })
 export class NavbarComponent {
   readonly cart = inject(CartService);
+  readonly version = environment.version;
 }

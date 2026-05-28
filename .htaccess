@@ -1,0 +1,16 @@
+# Habilita el motor de reescritura de URLs de Apache
+RewriteEngine On
+
+# Establece la ruta base del subdirectorio donde está la app
+RewriteBase /ecommerce/
+
+# Regla 1: Si el archivo solicitado ES un archivo real que existe → lo sirve tal cual
+# (permite cargar chunk-xxx.js, styles.css, favicon.ico, etc.)
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Regla 2: Si la ruta solicitada ES un directorio real que existe → lo sirve tal cual
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Si no se cumplió ninguna de las condiciones anteriores (la ruta NO existe físicamente)
+# → redirige todo al index.html para que Angular Router tome el control
+RewriteRule ^ index.html [L]

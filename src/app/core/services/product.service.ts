@@ -3,8 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs/operators';
 import { ApiRespuesta, Category, Product, ProductoBackend } from '../models/product.model';
+import { environment } from '../../../environments/environment';
 
-const API_URL = 'http://localhost:8080/api/productos';
+const API_URL = `${environment.apiBaseUrl}/productos`;
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {

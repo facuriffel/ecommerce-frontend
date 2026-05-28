@@ -3,8 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ApiRespuesta } from '../models/product.model';
+import { environment } from '../../../environments/environment';
 
-const API_URL = 'http://localhost:8080/api/pedidos';
+const API_URL = `${environment.apiBaseUrl}/pedidos`;
 
 export interface OrderRequest {
   nombre: string;
